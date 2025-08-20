@@ -1,9 +1,9 @@
-<h2>Elevare Ars</h2>
+Elevare Ars
 
 Elevare Ars is an open-source AI-powered career guidance and mentorship platform.
 Our mission is to help students, graduates, and professionals discover career paths, acquire in-demand skills, and connect with mentors who can guide them to success.
 
-✨ Key Features
+<h2>✨ Key Features</h2>
 
 AI-powered career suggestions
 
@@ -13,19 +13,21 @@ Profile & progress tracking
 
 Mentorship browsing & connections
 
-Notifications & reminders
+Push Notifications (via Firebase Cloud Messaging)
 
 Web + Mobile (Flutter + Responsive Web)
 
-👐 Open Source & Free
+<h2>👐 Open Source & Free</h2>
 
 Elevare Ars is completely free and open source.
 
-Our goal is to build a community-driven platform that grows with contributions from developers, designers, mentors, and students. Everyone can use it without cost.
+Our goal is to build a community-driven platform that grows with contributions from developers, designers, mentors, and students.
+
+Everyone can use it without cost.
 
 💡 Future enhancements may come, but the core project will remain free and open source.
 
-🚀 How It Works (For Users)
+<h2>🚀 How It Works (For Users)</h2>
 
 Sign Up → Create a free account.
 
@@ -37,7 +39,7 @@ Track Progress → Update your learning journey as you grow.
 
 Find Mentors → Connect with experienced professionals who can guide you.
 
-Stay Updated → Get notifications, reminders, and new opportunities.
+Stay Updated → Receive push notifications (via FCM) and reminders for milestones and opportunities.
 
 Whether you’re a student, graduate, or career-switcher — Elevare Ars is your personal guide.
 
@@ -49,23 +51,25 @@ Backend: Supabase (Auth, Database, Edge Functions)
 
 AI: OpenAI / HuggingFace (for career insights)
 
+Notifications: Firebase Cloud Messaging (FCM)
+
 Hosting: Supabase + Vercel (for web)
 
 <h2>🤝 Contribution</h2>
 
 We welcome contributions from developers, designers, mentors, and community members!
 
-🔄 Branch Workflow
+<h3>🔄 Branch Workflow</h3>
 
 main → Production branch (stable, clean, always deployable)
 
 develop → Contribution branch (all new features & fixes go here first)
 
-<h2>📌 Steps to Contribute</h2>
+<h3>📌 Steps to Contribute</h3>
 
 Fork the repo
 
-Clone your fork
+Clone your fork:
 
 git clone https://github.com/yourusername/elevare-ars.git
 cd elevare-ars
