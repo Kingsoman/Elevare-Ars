@@ -1,4 +1,4 @@
-##Elevare Ars
+<h2>Elevare Ars</h2>
 
 Elevare Ars is an open-source AI-powered career guidance and mentorship platform.
 Our mission is to help students, graduates, and professionals discover career paths, acquire in-demand skills, and connect with mentors who can guide them to success.
