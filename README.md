@@ -69,28 +69,27 @@ develop → Contribution branch (all new features & fixes go here first)
 
 Fork the repo
 
-Clone your fork:
+Clone your fork
 
 git clone https://github.com/yourusername/elevare-ars.git
-cd elevare-ars
 
+cd elevare-ars
 
 Checkout to develop branch
 
 git checkout develop
 
-
 Create a new feature branch
 
 git checkout -b feature/your-feature-name
 
-
 Commit & Push your changes
 
 git add .
-git commit -m "Added [your feature]"
-git push origin feature/your-feature-name
 
+git commit -m "Added [your feature]"
+
+git push origin feature/your-feature-name
 
 Open a Pull Request → Merge into develop
 
