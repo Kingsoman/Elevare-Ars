@@ -59,42 +59,7 @@ Hosting: Supabase + Vercel (for web)
 
 We welcome contributions from developers, designers, mentors, and community members!
 
-<h3>🔄 Branch Workflow</h3>
-
-main → Production branch (stable, clean, always deployable)
-
-develop → Contribution branch (all new features & fixes go here first)
-
-<h3>📌 Steps to Contribute</h3>
-
-Fork the repo
-
-Clone your fork
-
-git clone https://github.com/yourusername/elevare-ars.git
-
-cd elevare-ars
-
-Checkout to develop branch
-
-git checkout develop
-
-Create a new feature branch
-
-git checkout -b feature/your-feature-name
-
-Commit & Push your changes
-
-git add .
-
-git commit -m "Added [your feature]"
-
-git push origin feature/your-feature-name
-
-Open a Pull Request → Merge into develop
-
-Once reviewed & tested, changes will be merged into main.
-
+<h3>🔄 Branch Workflow</h3> <ul> <li><b>main</b> → Production branch (stable, clean, always deployable)</li> <li><b>develop</b> → Contribution branch (all new features & fixes go here first)</li> </ul> <h3>📌 Steps to Contribute</h3> <ol> <li>Fork the repo</li> <li>Clone your fork <ul> <li><code>git clone https://github.com/yourusername/elevare-ars.git</code></li> <li><code>cd elevare-ars</code></li> </ul> </li> <li>Checkout to develop branch <ul> <li><code>git checkout develop</code></li> </ul> </li> <li>Create a new feature branch <ul> <li><code>git checkout -b feature/your-feature-name</code></li> </ul> </li> <li>Commit & Push your changes <ul> <li><code>git add .</code></li> <li><code>git commit -m "Added [your feature]"</code></li> <li><code>git push origin feature/your-feature-name</code></li> </ul> </li> <li>Open a Pull Request → Merge into <b>develop</b> <ul> <li>Once reviewed & tested, changes will be merged into <b>main</b>.</li> </ul> </li> </ol>
 <h2>👥 Contributors</h2>
 
 Thanks goes to these wonderful people who make Elevare Ars possible 💜
