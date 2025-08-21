@@ -1,5 +1,5 @@
 <h1>Elevare Ars</h1>
-<p>![Flutter CI](https://github.com/Kingsoman/Elevare-Ars/actions/workflows/flutter-ci.yml/badge.svg)</p>
+![Flutter CI](https://github.com/Kingsoman/Elevare-Ars/actions/workflows/flutter-ci.yml/badge.svg)
 <p><strong>Elevare Ars</strong> is an open-source AI-powered career guidance and mentorship platform. Our mission is to help students, graduates, and professionals discover career paths, acquire in-demand skills, and connect with mentors who can guide them to success.</p>
 
 <p>
