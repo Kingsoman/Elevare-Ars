@@ -1,4 +1,4 @@
-<h2>#Elevare Ars</h2>
+<h2>Elevare Ars</h2>
 
 ![Flutter CI](https://github.com/Kingsoman/Elevare-Ars/actions/workflows/flutter-ci.yml/badge.svg)
 
