@@ -62,7 +62,37 @@ Students often struggle to understand real-world career paths and lack access to
 </ul>
 
 <hr/>
+<h2>👐 Open Source &amp; Free</h2>
+<ul>
+  <li>Elevare Ars is completely free and open source.</li>
+  <li>Community-driven: built by developers, designers, mentors, and students.</li>
+  <li>Everyone can use it without cost.</li>
+</ul>
+<p><em>Future enhancements may come, but the core project will remain free and open source.</em></p>
 
+<hr/>
+
+<h2>🏞 Demo / Screenshots</h2>
+<p align="center">
+  <img src="screenshots/homepage.png" width="800" alt="Homepage Screenshot Placeholder"/>
+</p>
+<p align="center">
+  <img src="screenshots/mobile_home.png" width="300" alt="Mobile Screenshot Placeholder"/>
+  <img src="screenshots/tablet_home.png" width="500" alt="Tablet Screenshot Placeholder"/>
+</p>
+
+<hr/>
+
+<h2>🚀 How It Works (For Users)</h2>
+<ol>
+  <li><strong>Sign Up</strong> &rarr; Create a free account.</li>
+  <li><strong>Discover Careers</strong> &rarr; AI suggests paths based on your interests and skills.</li>
+  <li><strong>Skill Roadmap</strong> &rarr; Get a step-by-step learning plan with recommended resources.</li>
+  <li><strong>Track Progress</strong> &rarr; Update your learning journey as you learn.</li>
+  <li><strong>Find Mentors</strong> &rarr; Connect with experienced professionals.</li>
+  <li><strong>Stay Updated</strong> &rarr; Receive reminders and alerts via FCM.</li>
+</ol>
+<hr/>
 <h2>🛠 Tech Stack</h2>
 <ul>
   <li><strong>Frontend &amp; Mobile:</strong> Flutter (Riverpod, Clean Architecture)</li>
