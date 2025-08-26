@@ -1,0 +1,69 @@
+name: elevare_ars
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter_icons:
+  image_path: "lib/core/assets/image/logo_icon.png"
+  ios: true
+  android: true
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "lib/core/assets/image/logo_icon.png"
+    background_color: "#FFFFFF"
+    theme_color: "#FF9800"
+  windows:
+    generate: true
+    image_path: "lib/core/assets/image/logo_icon.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "lib/core/assets/image/logo_icon.png"
+
+flutter_native_splash:
+  # Background colors
+  color: "#FFFFFF"          # Light mode background (white)
+  color_dark: "#121212"     # Dark mode background (dark gray/black)
+  
+  # Logo images
+  image: lib/core/assets/image/full_logo.png
+  image_dark: lib/core/assets/image/full_logo.png
+  
+  # Platform support
+  android: true
+  ios: true
+  web: true
+  
+  # Android 12+ specific configuration
+  android_12:
+    image: lib/core/assets/image/full_logo.png
+    icon_background_color: "#FFFFFF"
+    image_dark: lib/core/assets/image/full_logo.png
+    icon_background_color_dark: "#121212"
+  
+  # Essential centering and positioning properties
+  android_gravity: center    # Centers the image on Android
+  ios_content_mode: center   # Centers the image on iOS
+  web_image_mode: center     # Centers the image on Web
+  
+  
+  # Display options
+  fullscreen: true 
+
+flutter:
+  uses-material-design: true
