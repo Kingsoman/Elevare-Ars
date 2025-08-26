@@ -1,29 +1,46 @@
 name: Flutter CI
 
 on:
-  push:
-    branches: [ develop, main ]
   pull_request:
     branches: [ develop, main ]
+  push:
+    branches: [ main ]   # when code is merged into main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        flutter-version: [3.24.0, stable]  # test on current + latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0' # change if using different version
+          flutter-version: ${{ matrix.flutter-version }}
 
-      - name: Install dependencies
-        run: flutter pub get
+      - run: flutter --version
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
 
-      - name: Run Flutter Analyze
-        run: flutter analyze
+  release-apk:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'   # only runs on main branch
+    steps:
+      - uses: actions/checkout@v3
 
-      - name: Run Flutter Tests
-        run: flutter test
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.24.0
+
+      - run: flutter pub get
+      - run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
