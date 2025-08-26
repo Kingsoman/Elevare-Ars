@@ -187,7 +187,57 @@ git push origin feature/your-feature-name</code></pre>
 </ol>
 
 <hr/>
+<h2>🧪 Running Tests</h2> 
 
+Before pushing your changes, make sure all tests pass locally:
+
+```bash
+flutter test
+```
+<hr/>
+
+<h2>📂 Project Structure</h2>
+
+<p>The project follows a modular <strong>feature-first architecture</strong> using Flutter + Riverpod.</p>
+
+<pre>
+lib/
+│
+├── core/               # Global app config (theme, constants, helpers, widgets)
+│   ├── theme/          # Colors, typography, dark/light themes
+│   ├── utils/          # Helpers, validators, formatters
+│   └── widgets/        # Reusable shared widgets (buttons, inputs, etc.)
+│
+├── features/           # Independent features (scalable, testable)
+│   ├── auth/           # Authentication (login, signup, reset password)
+│   ├── profile/        # User profile, settings
+│   ├── mentorship/     # Mentor/mentee matching, session booking
+│   └── career/         # Career roadmap, AI recommendations
+│
+├── services/           # External services integration
+│   ├── supabase_service.dart  # Supabase (auth, DB, storage)
+│   ├── fcm_service.dart       # Firebase push notifications
+│   └── resend_service.dart    # Email delivery
+│
+├── providers/          # Riverpod providers (global state management)
+│
+├── app.dart            # Root app widget
+└── main.dart           # Entry point
+</pre>
+
+<h3>🖼 Architecture Overview</h3>
+
+```mermaid
+flowchart TD
+  User[👩‍🎓 User] -->|UI Events| Flutter[📱 Flutter App]
+  Flutter -->|API Calls| Supabase[(🗄 Supabase)]
+  Flutter -->|Push Notifications| FCM[📢 Firebase Cloud Messaging]
+  Flutter -->|Email| Resend[📧 Resend Service]
+  Supabase -->|DB/Auth| Postgres[(🐘 PostgreSQL)]
+  Flutter -->|AI Requests| AIService[🤖 AI Microservices]
+```
+
+<hr/>
 <h2>👥 Contributors</h2>
 <p>Thanks goes to these wonderful people who make Elevare Ars possible 💜</p>
 <p>
