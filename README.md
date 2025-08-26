@@ -1,3 +1,4 @@
+
 Elevare Ars
 
 Elevare Ars is an open-source AI-powered career guidance and mentorship platform.
@@ -44,4 +45,3 @@ Fork the repo
 Make your changes
 
 Submit a pull request
-
