@@ -4,31 +4,31 @@ on:
   pull_request:
     branches: [ develop, main ]
   push:
-    branches: [ main ]   # when code is merged into main
+    branches: [ main ]   # extra checks when merging to main
 
 jobs:
-  build:
+  pr-checks:
+    name: PR Checks
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        flutter-version: [3.24.0, stable]  # test on current + latest
+    if: github.event_name == 'pull_request'
 
     steps:
       - uses: actions/checkout@v3
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: ${{ matrix.flutter-version }}
+          flutter-version: 3.24.0   # match your SDK
 
-      - run: flutter --version
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
+      - run: flutter build apk --debug
 
-  release-apk:
+  release-checks:
+    name: Release Checks
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'   # only runs on main branch
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
     steps:
       - uses: actions/checkout@v3
 
@@ -37,10 +37,6 @@ jobs:
           flutter-version: 3.24.0
 
       - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
       - run: flutter build apk --release
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v3
-        with:
-          name: app-release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
