@@ -11,6 +11,12 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.4.6
+  flutter_riverpod: ^2.6.1
+  font_awesome_flutter: ^10.9.1
+  google_fonts: ^6.3.1
+  introduction_screen: ^3.1.17
+  shared_preferences: ^2.5.3
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -67,3 +73,7 @@ flutter_native_splash:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - lib/core/assets/image/
+    - lib/core/assets/image/onboarding_pictures/
