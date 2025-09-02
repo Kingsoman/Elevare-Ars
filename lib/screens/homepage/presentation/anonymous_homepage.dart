@@ -1,5 +1,5 @@
 import 'package:elevare_ars/core/config/themes/darkmode_switch_widget.dart';
-import 'package:elevare_ars/screens/homepage/presentation/homepage.dart';
+import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/anonymouspage.dart';
 import 'package:flutter/material.dart';
 import 'package:elevare_ars/core/config/responsive%20layout/response_layout.dart';
 
@@ -134,7 +134,7 @@ class ProfileCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(14.0),
-        child: Row(
+        child: Column(
           children: [
             // Fixed: Using CircleAvatar with icon instead of network image
             CircleAvatar(
@@ -149,12 +149,12 @@ class ProfileCard extends StatelessWidget {
                 children: [
                   Text(
                     'Somto Onyeagusi',
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
                   ),
                   SizedBox(height: 4),
                   Text(
                     'Computer Science Student • University',
-                    style: TextStyle(fontSize: 13),
+                    style: TextStyle(fontSize: 11),
                   ),
                   SizedBox(height: 8),
                   ElevatedButton(
@@ -190,7 +190,7 @@ class SimpleMenuCard extends StatelessWidget {
         children: items.map((it) {
           return ListTile(
             leading: Icon(it['icon'] as IconData),
-            title: Text(it['label'] as String),
+            title: Text(it['label'] as String, style: TextStyle(fontSize: 14)),
             onTap: () {},
           );
         }).toList(),
@@ -205,106 +205,99 @@ class CreatePostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: EdgeInsets.only(bottom: 12),
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withAlpha(26),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: Offset(0, 1),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.blue[100],
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(Icons.person, color: Colors.blue[600]),
-              ),
-              SizedBox(width: 12),
-              Expanded(
-                child: TextField(
-                  minLines: 2,
-                  maxLines: 4,
-                  decoration: InputDecoration(
-                    hintText: "Share an update, question, or request advice",
-                    filled: true,
-                    fillColor: Colors.grey[50],
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 12,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.grey[200]!),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(24),
-                      borderSide: BorderSide(color: Colors.grey[200]!),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(24),
-                      borderSide: BorderSide(color: Colors.blue),
-                    ),
+    return Card(
+      child: Container(
+        width: double.infinity,
+        margin: EdgeInsets.only(bottom: 12),
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.blue[100],
+                    shape: BoxShape.circle,
                   ),
-                  style: TextStyle(color: Colors.black87),
+                  child: Icon(Icons.person, color: Colors.blue[600]),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 12),
-          // Change the alignment of the Row to push the buttons to the ends
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  TextButton.icon(
+                SizedBox(width: 12),
+                Expanded(
+                  child: TextField(
+                    minLines: 1,
+                    maxLines: 4,
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(),
+                      hintText: "Share an update, question, or request advice",
+                      filled: true,
+                      fillColor: Colors.grey[50],
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.grey[200]!),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        borderSide: BorderSide(color: Colors.grey[200]!),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                    ),
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 12),
+            // Change the alignment of the Row to push the buttons to the ends
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    TextButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.photo_camera_outlined, size: 20),
+                      label: Text('Photo'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.grey[600],
+                      ),
+                    ),
+                    TextButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.videocam_outlined, size: 20),
+                      label: Text('Video'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+                // Use a SizedBox to wrap the ElevatedButton and give it a bounded width
+                SizedBox(
+                  width: 80, // You can adjust this width
+                  child: ElevatedButton(
                     onPressed: () {},
-                    icon: Icon(Icons.photo_camera_outlined, size: 20),
-                    label: Text('Photo'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.grey[600],
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
                     ),
+                    child: Text('Post'),
                   ),
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.videocam_outlined, size: 20),
-                    label: Text('Video'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.grey[600],
-                    ),
-                  ),
-                ],
-              ),
-              // Use a SizedBox to wrap the ElevatedButton and give it a bounded width
-              SizedBox(
-                width: 80, // You can adjust this width
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                  ),
-                  child: Text('Post'),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -318,122 +311,112 @@ class FeedList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: List.generate(5, (index) {
-        return Container(
-          width: double.infinity,
-          margin: EdgeInsets.only(bottom: 12),
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withAlpha(26),
-                spreadRadius: 1,
-                blurRadius: 3,
-                offset: Offset(0, 1),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Post header
-              Row(
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.purple[100],
-                      shape: BoxShape.circle,
+        return Card(
+          child: Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(bottom: 12),
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Post header
+                Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.purple[100],
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.person, color: Colors.purple[600]),
                     ),
-                    child: Icon(Icons.person, color: Colors.purple[600]),
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Mentor ${index + 1}',
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          '${index + 2}h • Mentor',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Mentor ${index + 1}',
+                            style: TextStyle(fontWeight: FontWeight.w600),
                           ),
-                        ),
-                      ],
+                          Text(
+                            '${index + 2}h • Mentor',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Icon(Icons.more_horiz, color: Colors.grey[600]),
-                ],
-              ),
-              SizedBox(height: 12),
-              // Post content
-              Text(
-                'Quick tip: Practice coding for 30 minutes daily and build small projects. That beats long passive studying.',
-                style: TextStyle(fontSize: 14, height: 1.4),
-              ),
-              // Sample image for every 3rd post
-              if (index % 3 == 0) ...[
+                    Icon(Icons.more_horiz, color: Colors.grey[600]),
+                  ],
+                ),
                 SizedBox(height: 12),
-                Container(
-                  width: double.infinity,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey[200]!),
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.image, size: 40, color: Colors.grey[400]),
-                        SizedBox(height: 8),
-                        Text(
-                          'Sample Image',
-                          style: TextStyle(color: Colors.grey[500]),
-                        ),
-                      ],
+                // Post content
+                Text(
+                  'Quick tip: Practice coding for 30 minutes daily and build small projects. That beats long passive studying.',
+                  style: TextStyle(fontSize: 14, height: 1.4),
+                ),
+                // Sample image for every 3rd post
+                if (index % 3 == 0) ...[
+                  SizedBox(height: 12),
+                  Container(
+                    width: double.infinity,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey[200]!),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.image, size: 40, color: Colors.grey[400]),
+                          SizedBox(height: 8),
+                          Text(
+                            'Sample Image',
+                            style: TextStyle(color: Colors.grey[500]),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+                ],
+                SizedBox(height: 12),
+                // Post actions
+                Row(
+                  children: [
+                    TextButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.thumb_up_outlined, size: 18),
+                      label: Text('Like'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.grey[600],
+                      ),
+                    ),
+                    TextButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.chat_bubble_outline, size: 18),
+                      label: Text('Comment'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.grey[600],
+                      ),
+                    ),
+                    TextButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.share_outlined, size: 18),
+                      label: Text('Share'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.grey[600],
+                      ),
+                    ),
+                  ],
                 ),
               ],
-              SizedBox(height: 12),
-              // Post actions
-              Row(
-                children: [
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.thumb_up_outlined, size: 18),
-                    label: Text('Like'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.grey[600],
-                    ),
-                  ),
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.chat_bubble_outline, size: 18),
-                    label: Text('Comment'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.grey[600],
-                    ),
-                  ),
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.share_outlined, size: 18),
-                    label: Text('Share'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.grey[600],
-                    ),
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
         );
       }),
@@ -508,76 +491,68 @@ class WhoToFollowCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = [Colors.red, Colors.blue, Colors.orange];
 
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withAlpha(26),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: Offset(0, 1),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'People you may want to follow',
-            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-          ),
-          SizedBox(height: 16),
-          // Generate 3 suggestion items
-          ...List.generate(3, (index) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: index == 2 ? 0 : 12),
-              child: Row(
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withAlpha(26),
-                      shape: BoxShape.circle,
+    return Card(
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'People you may want to follow',
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+            ),
+            SizedBox(height: 16),
+            // Generate 3 suggestion items
+            ...List.generate(3, (index) {
+              return Padding(
+                padding: EdgeInsets.only(bottom: index == 2 ? 0 : 12),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.withAlpha(26),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.person, color: colors[index]),
                     ),
-                    child: Icon(Icons.person, color: colors[index]),
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Pro ${index + 1}',
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          'Industry Mentor',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Pro ${index + 1}',
+                            style: TextStyle(fontWeight: FontWeight.w600),
                           ),
-                        ),
-                      ],
+                          Text(
+                            'Industry Mentor',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      foregroundColor: Colors.white,
-                      minimumSize: Size(70, 32),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        minimumSize: Size(70, 32),
+                      ),
+                      child: Text('Follow', style: TextStyle(fontSize: 10)),
                     ),
-                    child: Text('Follow'),
-                  ),
-                ],
-              ),
-            );
-          }),
-        ],
+                  ],
+                ),
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

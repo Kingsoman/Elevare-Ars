@@ -1,4 +1,5 @@
 import 'package:elevare_ars/features/auth/presentation/forgotpassword.dart';
+import 'package:elevare_ars/screens/homepage/presentation/anonymous_homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -23,7 +24,10 @@ class _LoginFormState extends State<LoginForm> {
 
   void _onLogin() {
     if (_formKey.currentState!.validate()) {
-      // TODO: Supabase login logic
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => AnonymousHomepage()),
+      );
       debugPrint("Email: ${_emailCtrl.text}, Password: ${_passwordCtrl.text}");
     }
   }

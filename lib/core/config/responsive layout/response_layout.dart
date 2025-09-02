@@ -42,7 +42,7 @@ class ResponsiveLayout extends StatelessWidget {
           return Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (leftColumn != null) Flexible(flex: 3, child: leftColumn!),
+              if (leftColumn != null) Flexible(flex: 2, child: leftColumn!),
               const SizedBox(width: 16),
               Flexible(flex: 6, child: centerColumn),
               const SizedBox(width: 16),

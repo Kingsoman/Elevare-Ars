@@ -3,88 +3,115 @@ import 'package:google_fonts/google_fonts.dart';
 
 /// A professional and consistent app theme for both light and dark modes.
 ///
-/// This theme uses Material 3's `ColorScheme.fromSeed` to generate vibrant
-/// and harmonious color schemes, then overrides specific colors with a
-/// custom-defined professional palette. It also integrates Google Fonts
-/// for a clean and modern typography.
+/// This theme is built upon Material 3's dynamic color system using
+/// `ColorScheme.fromSeed`. It establishes a single seed color and then
+/// overrides specific theme properties to create a unique, modern, and
+/// cohesive visual identity.
+///
+/// It provides:
+///   - Harmonious color schemes for light and dark modes.
+///   - Consistent typography using the 'Poppins' font from Google Fonts.
+///   - Pre-styled themes for most common widgets (Buttons, Cards, Inputs, etc.).
+///   - A flat, modern aesthetic with subtle borders instead of large shadows.
 class AppTheme {
-  // 1. Define a single seed color for the entire app.
-  //    Material 3's algorithm will derive all other colors from this.
-  //    A deep blue is used for a professional and versatile look.
-  static const Color _seedColor = Color(0xFF0052D4);
+  // 1. Define the single seed color that will be used to generate
+  //    the entire color palette for both light and dark themes.
+  //    A vibrant, professional blue is chosen for its versatility.
+  static const Color _seedColor = Color.fromARGB(255, 92, 92, 92);
 
-  // --- Light Theme ---
+  // --- Light Theme Definition ---
   static final ThemeData lightTheme = _buildTheme(
-    colorScheme:
-        ColorScheme.fromSeed(
-          seedColor: _seedColor,
-          brightness: Brightness.light,
-        ).copyWith(
-          surface: const Color(0xFFF9FAFB), // Background
-          onSurface: const Color(0xFF111827), // Primary Text
-          surfaceContainer: const Color(0xFFFFFFFF), // Surface (cards, sheets)
-          onSurfaceVariant: const Color(0xFF6B7280), // Secondary Text
-          error: const Color(0xFFDC2626),
-          onError: Colors.white,
-        ),
     brightness: Brightness.light,
+    seedColor: _seedColor,
+    // Override specific colors of the generated scheme for a custom look.
+    colorOverrides: const ColorScheme.light().copyWith(
+      surface: const Color(0xFFF8F9FA), // Main background color (from image)
+      onSurface: const Color(0xFF1A1C1E), // Main text color
+      surfaceContainer: Colors.white, // For cards, dialogs, sheets (from image)
+      onSurfaceVariant: const Color(0xFF43474E), // For secondary text and icons
+      outlineVariant: const Color(
+        0xFFE0E0E0,
+      ), // For subtle borders and dividers
+      error: const Color(0xFFDC2626), // Error color for validation, etc.
+      onError: Colors.white, // Text/icon color on top of the error color
+    ),
   );
 
-  // --- Dark Theme ---
+  // --- Dark Theme Definition ---
   static final ThemeData darkTheme = _buildTheme(
-    colorScheme:
-        ColorScheme.fromSeed(
-          seedColor: _seedColor,
-          brightness: Brightness.dark,
-        ).copyWith(
-          surface: const Color(0xFF121212), // Background
-          onSurface: const Color(0xFFF3F4F6), // Primary Text
-          surfaceContainer: const Color(0xFF1F2937), // Surface (cards, dialogs)
-          onSurfaceVariant: const Color(0xFF9CA3AF), // Secondary Text
-          error: const Color(0xFFEF4444),
-          onError: Colors.black, // Better contrast on the bright red
-        ),
     brightness: Brightness.dark,
+    seedColor: _seedColor,
+    // Override specific colors of the generated scheme for a custom look.
+    colorOverrides: const ColorScheme.dark().copyWith(
+      surface: const Color(0xFF121212), // Main background color (from image)
+      onSurface: const Color(0xFFE2E2E6), // Main text color (avoids pure white)
+      surfaceContainer: const Color(
+        0xFF1E2126,
+      ), // For cards, dialogs, sheets (from image)
+      onSurfaceVariant: const Color(0xFF9CA3AF), // For secondary text and icons
+      outlineVariant: const Color(
+        0xFF32363B,
+      ), // For subtle borders and dividers
+      error: const Color(0xFFF87171), // A lighter red for dark mode
+      onError: const Color(0xFF450A0A), // High-contrast text on error color
+    ),
   );
 
-  /// A private helper method to build the theme data.
+  /// A private helper method to construct the [ThemeData].
   ///
-  /// This centralizes the theme configuration, ensuring consistency
-  /// between the light and dark themes.
+  /// This centralizes all the widget theme definitions to ensure that
+  /// both light and dark themes share the same typography, shapes, and styles.
   static ThemeData _buildTheme({
-    required ColorScheme colorScheme,
     required Brightness brightness,
+    required Color seedColor,
+    required ColorScheme colorOverrides,
   }) {
-    // Use the base theme provided by the brightness.
-    final baseTheme = ThemeData(brightness: brightness);
+    // 1. Generate the base ColorScheme from the seed color.
+    final colorScheme =
+        ColorScheme.fromSeed(
+          seedColor: seedColor,
+          brightness: brightness,
+        ).copyWith(
+          // 2. Apply the custom color overrides.
+          surface: colorOverrides.surface,
+          onSurface: colorOverrides.onSurface,
+          surfaceContainer: colorOverrides.surfaceContainer,
+          onSurfaceVariant: colorOverrides.onSurfaceVariant,
+          outlineVariant: colorOverrides.outlineVariant,
+          error: colorOverrides.error,
+          onError: colorOverrides.onError,
+        );
 
-    // Create a text theme using Google Fonts for a modern feel.
-    final textTheme = GoogleFonts.interTextTheme(baseTheme.textTheme).apply(
+    // 3. Define the base theme and typography.
+    final baseTheme = ThemeData(brightness: brightness);
+    final textTheme = GoogleFonts.poppinsTextTheme(baseTheme.textTheme).apply(
       bodyColor: colorScheme.onSurface,
       displayColor: colorScheme.onSurface,
     );
 
+    // 4. Return the configured ThemeData.
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.surface,
       textTheme: textTheme.copyWith(
-        // Customizing specific text styles for consistency.
+        // Customizing specific text styles for a clear visual hierarchy.
         headlineLarge: textTheme.headlineLarge?.copyWith(
           fontWeight: FontWeight.bold,
-          fontSize: 32,
         ),
         headlineMedium: textTheme.headlineMedium?.copyWith(
           fontWeight: FontWeight.w600,
-          fontSize: 24,
         ),
+        titleLarge: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
         bodyLarge: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
       ),
 
+      // --- Component Themes ---
+
       // ✅ Card Theme
       cardTheme: CardThemeData(
-        color: colorScheme.surfaceContainer, // A slightly elevated color
-        elevation: 0, // Flatter look for this design
+        color: colorScheme.surfaceContainer,
+        elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(
@@ -92,19 +119,16 @@ class AppTheme {
             width: 1,
           ),
         ),
-        margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       ),
 
       // ✅ AppBar Theme
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
-        elevation: 0, // A flatter, more modern look
-        surfaceTintColor: Colors.transparent, // Prevents tinting on scroll
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
         centerTitle: true,
-        titleTextStyle: textTheme.titleLarge?.copyWith(
-          fontWeight: FontWeight.w600,
-        ),
+        titleTextStyle: textTheme.titleLarge,
       ),
 
       // ✅ Button Themes
@@ -147,21 +171,19 @@ class AppTheme {
       // ✅ Input Fields Theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: colorScheme.surfaceContainer, // Adjusted to match card
+        fillColor: colorScheme.surfaceContainer,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 16,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: colorScheme.outline.withValues(alpha: 0.5),
-          ),
+          borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: colorScheme.outline.withValues(alpha: 0.5),
+            color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -170,35 +192,39 @@ class AppTheme {
         ),
         labelStyle: textTheme.bodyMedium,
         hintStyle: textTheme.bodyMedium?.copyWith(
-          color: colorScheme.onSurfaceVariant, // Using the specified color
+          color: colorScheme.onSurfaceVariant,
         ),
       ),
 
-      // ✅ Bottom Navigation Bar Theme
+      // ✅ Navigation Themes
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: colorScheme.surfaceContainer,
         selectedItemColor: colorScheme.primary,
         unselectedItemColor: colorScheme.onSurfaceVariant,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
       ),
-
-      // ✅ Tab Bar Theme
       tabBarTheme: TabBarThemeData(
         indicatorColor: colorScheme.primary,
         labelColor: colorScheme.primary,
         unselectedLabelColor: colorScheme.onSurfaceVariant,
         indicatorSize: TabBarIndicatorSize.tab,
       ),
+      navigationRailTheme: NavigationRailThemeData(
+        backgroundColor: colorScheme.surface,
+        indicatorColor: colorScheme.primaryContainer,
+        selectedIconTheme: IconThemeData(color: colorScheme.onPrimaryContainer),
+        unselectedIconTheme: IconThemeData(color: colorScheme.onSurfaceVariant),
+      ),
 
-      // ✅ Dialog Theme
+      // ✅ Dialog & Sheet Themes
       dialogTheme: DialogThemeData(
-        backgroundColor: colorScheme.surfaceContainerHigh,
+        backgroundColor: colorScheme.surfaceContainer,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         titleTextStyle: textTheme.titleLarge,
       ),
-
-      // ✅ Bottom Sheet Theme
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: colorScheme.surfaceContainer,
         modalBackgroundColor: colorScheme.surfaceContainer,
@@ -206,59 +232,18 @@ class AppTheme {
           borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
         ),
       ),
-
-      // ✅ Slider, Switch, Checkbox, Radio Themes
-      sliderTheme: SliderThemeData(
-        activeTrackColor: colorScheme.primary,
-        inactiveTrackColor: colorScheme.primary.withAlpha(0x3d),
-        thumbColor: colorScheme.primary,
-      ),
-      switchTheme: SwitchThemeData(
-        thumbColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return colorScheme.primary;
-          }
-          return colorScheme.outline;
-        }),
-        trackColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return colorScheme.primary.withAlpha(0x80);
-          }
-          return null;
-        }),
-        trackOutlineColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return Colors.transparent;
-          }
-          return colorScheme.outline;
-        }),
-      ),
-      checkboxTheme: CheckboxThemeData(
-        fillColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return colorScheme.primary;
-          }
-          return null;
-        }),
-        checkColor: WidgetStateProperty.all(colorScheme.onPrimary),
-        side: BorderSide(color: colorScheme.outline, width: 1.5),
-      ),
-      radioTheme: RadioThemeData(
-        fillColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return colorScheme.primary;
-          }
-          return null;
-        }),
+      popupMenuTheme: PopupMenuThemeData(
+        color: colorScheme.surfaceContainer,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        elevation: 4,
+        textStyle: textTheme.bodyMedium,
       ),
 
-      // ✅ Progress Indicator Theme
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: colorScheme.primary,
-        circularTrackColor: colorScheme.surfaceContainerHighest,
+      // ✅ Other Component Themes
+      dividerTheme: DividerThemeData(
+        color: colorScheme.outlineVariant.withValues(alpha: 0.5),
+        thickness: 1,
       ),
-
-      // ✅ Chip Theme
       chipTheme: ChipThemeData(
         backgroundColor: colorScheme.secondaryContainer,
         labelStyle: textTheme.labelSmall?.copyWith(
@@ -266,8 +251,27 @@ class AppTheme {
         ),
         side: BorderSide.none,
       ),
-
-      // ✅ Tooltip Theme
+      switchTheme: SwitchThemeData(
+        thumbColor: WidgetStateProperty.resolveWith((states) {
+          return states.contains(WidgetState.selected)
+              ? colorScheme.primary
+              : colorScheme.outline;
+        }),
+        trackColor: WidgetStateProperty.resolveWith((states) {
+          return states.contains(WidgetState.selected)
+              ? colorScheme.primary.withValues(alpha: 0.5)
+              : null;
+        }),
+      ),
+      checkboxTheme: CheckboxThemeData(
+        fillColor: WidgetStateProperty.resolveWith((states) {
+          return states.contains(WidgetState.selected)
+              ? colorScheme.primary
+              : null;
+        }),
+        checkColor: WidgetStateProperty.all(colorScheme.onPrimary),
+        side: BorderSide(color: colorScheme.outline, width: 1.5),
+      ),
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
           color: colorScheme.inverseSurface,

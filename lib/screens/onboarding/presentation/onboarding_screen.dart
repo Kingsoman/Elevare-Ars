@@ -1,6 +1,8 @@
+import 'package:elevare_ars/features/auth/presentation/login.dart';
 import 'package:elevare_ars/screens/onboarding/domain/onboarding_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -43,9 +45,29 @@ class OnboardingScreen extends StatelessWidget {
           pages: onboardingPageViewModels,
           showNextButton: true,
           showDoneButton: true,
-          onDone: () {},
+          onSkip: () async {
+            final SharedPreferences prefs =
+                await SharedPreferences.getInstance();
+            await prefs.setBool('seenOnboardingPage', true);
+            if (!context.mounted) return;
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+            );
+          },
+          onDone: () async {
+            final SharedPreferences prefs =
+                await SharedPreferences.getInstance();
+
+            await prefs.setBool('seenOnboardingPage', true);
+            if (!context.mounted) return;
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+            );
+          },
           done: const Text("Done"),
-          next: const Icon(Icons.arrow_forward),
+          next: const Text('Skip'),
           dotsDecorator: DotsDecorator(
             activeColor: Theme.of(context).colorScheme.primary,
             size: const Size(10.0, 10.0),
