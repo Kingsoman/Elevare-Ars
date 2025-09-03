@@ -1,10 +1,17 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingManager {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  static const String _keySeenOnboarding = "seenOnboardingPage";
 
-  Future<bool?> checkOnboardingView() async {
-    final SharedPreferences prefs = await _prefs;
-    return prefs.getBool('seenOnboardingPage');
+  /// Check if onboarding has been shown before
+  static Future<bool> hasSeenOnboarding() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_keySeenOnboarding) ?? false;
+  }
+
+  /// Mark onboarding as completed
+  static Future<void> setOnboardingSeen() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keySeenOnboarding, true);
   }
 }

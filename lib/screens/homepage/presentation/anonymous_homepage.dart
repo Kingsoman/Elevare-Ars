@@ -33,13 +33,7 @@ class AnonymousHomepage extends StatelessWidget {
               ),
             ),
             SizedBox(width: 12),
-            Text(
-              'Elevare Ars',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+            Text('Elevare Ars', style: TextStyle(fontWeight: FontWeight.w600)),
             SizedBox(width: 20),
 
             // Search
@@ -51,7 +45,6 @@ class AnonymousHomepage extends StatelessWidget {
                     hintText: 'Search mentors, topics, posts',
                     prefixIcon: Icon(Icons.search),
                     filled: true,
-                    fillColor: Color(0xFFF1F4F8),
                     contentPadding: EdgeInsets.zero,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -65,12 +58,12 @@ class AnonymousHomepage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications_none, color: Colors.black54),
+            icon: Icon(Icons.notifications_none),
             onPressed: () {},
             tooltip: 'Notifications',
           ),
           IconButton(
-            icon: Icon(Icons.message_outlined, color: Colors.black54),
+            icon: Icon(Icons.message_outlined),
             onPressed: () {},
             tooltip: 'Messages',
           ),
@@ -143,27 +136,25 @@ class ProfileCard extends StatelessWidget {
               child: Icon(Icons.person, size: 40, color: Colors.blue[600]),
             ),
             SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Somto Onyeagusi',
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    'Computer Science Student • University',
-                    style: TextStyle(fontSize: 11),
-                  ),
-                  SizedBox(height: 8),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(minimumSize: Size(100, 36)),
-                    child: Text('View profile'),
-                  ),
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Somto Onyeagusi',
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'Computer Science Student • University',
+                  style: TextStyle(fontSize: 11),
+                ),
+                SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(minimumSize: Size(100, 36)),
+                  child: Text('View profile'),
+                ),
+              ],
             ),
           ],
         ),
