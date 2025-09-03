@@ -23,23 +23,23 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
 
-flutter_icons:
-  image_path: "lib/core/assets/image/logo_icon.png"
-  ios: true
+flutter_launcher_icons:
   android: true
+  image_path: "assets/image/logo_icon.png"
+  ios: true
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "lib/core/assets/image/logo_icon.png"
+    image_path: "assets/image/logo_icon.png"
     background_color: "#FFFFFF"
     theme_color: "#FF9800"
   windows:
     generate: true
-    image_path: "lib/core/assets/image/logo_icon.png"
+    image_path: "assets/image/logo_icon.png"
     icon_size: 48 # min:48, max:256, default: 48
   macos:
     generate: true
-    image_path: "lib/core/assets/image/logo_icon.png"
+    image_path: "assets/image/logo_icon.png"
 
 flutter_native_splash:
   # Background colors
@@ -47,8 +47,8 @@ flutter_native_splash:
   color_dark: "#121212"     # Dark mode background (dark gray/black)
   
   # Logo images
-  image: lib/core/assets/image/full_logo.png
-  image_dark: lib/core/assets/image/full_logo.png
+  image: assets/image/full_logo.png
+  image_dark: assets/image/full_logo.png
   
   # Platform support
   android: true
@@ -57,9 +57,9 @@ flutter_native_splash:
   
   # Android 12+ specific configuration
   android_12:
-    image: lib/core/assets/image/full_logo.png
+    image: assets/image/full_logo.png
     icon_background_color: "#FFFFFF"
-    image_dark: lib/core/assets/image/full_logo.png
+    image_dark: assets/image/full_logo.png
     icon_background_color_dark: "#121212"
   
   # Essential centering and positioning properties
@@ -75,5 +75,5 @@ flutter:
   uses-material-design: true
 
   assets:
-    - lib/core/assets/image/
-    - lib/core/assets/image/onboarding_pictures/
+    - assets/image/
+    - assets/image/onboarding_pictures/
