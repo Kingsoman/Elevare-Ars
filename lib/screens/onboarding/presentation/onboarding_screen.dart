@@ -45,21 +45,15 @@ class OnboardingScreen extends StatelessWidget {
           pages: onboardingPageViewModels,
           showNextButton: true,
           showDoneButton: true,
-          onSkip: () async {
-            final SharedPreferences prefs =
-                await SharedPreferences.getInstance();
-            await prefs.setBool('seenOnboardingPage', true);
+          skip: Text('Skip'),
+          onSkip: () {
             if (!context.mounted) return;
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => LoginPage()),
             );
           },
-          onDone: () async {
-            final SharedPreferences prefs =
-                await SharedPreferences.getInstance();
-
-            await prefs.setBool('seenOnboardingPage', true);
+          onDone: () {
             if (!context.mounted) return;
             Navigator.pushReplacement(
               context,
@@ -67,7 +61,7 @@ class OnboardingScreen extends StatelessWidget {
             );
           },
           done: const Text("Done"),
-          next: const Text('Skip'),
+          next: const Text('Next'),
           dotsDecorator: DotsDecorator(
             activeColor: Theme.of(context).colorScheme.primary,
             size: const Size(10.0, 10.0),

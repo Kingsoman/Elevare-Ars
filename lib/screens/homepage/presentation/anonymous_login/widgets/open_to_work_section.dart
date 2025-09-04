@@ -24,10 +24,7 @@ class OpenToWorkSection extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
-            Image.network(
-              "https://via.placeholder.com/300x300", // replace later
-              height: 250,
-            ),
+            Image.asset("assets/image/groupmentorship.png", fit: BoxFit.cover),
           ],
         ),
       ),
