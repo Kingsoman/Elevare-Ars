@@ -64,7 +64,7 @@ class OnboardingScreen extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => LoginPage()),
-            )
+            );
           },
           done: const Text("Done"),
           next: const Text('Skip'),
