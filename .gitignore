@@ -12,8 +12,10 @@
 .swiftpm/
 migrate_working_dir/
 
-# IntelliJ related
+# IntelliJ/Android Studio project files
+.idea/
 *.iml
+
 *.ipr
 *.iws
 .idea/
