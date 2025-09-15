@@ -1,4 +1,5 @@
 import 'package:elevare_ars/features/auth/presentation/login.dart';
+import 'package:elevare_ars/screens/onboarding/domain/onboarding_manager.dart';
 import 'package:elevare_ars/screens/onboarding/domain/onboarding_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -46,14 +47,17 @@ class OnboardingScreen extends StatelessWidget {
           showNextButton: true,
           showDoneButton: true,
           skip: Text('Skip'),
-          onSkip: () {
+          onSkip: () async {
+            await OnboardingManager.setOnboardingSeen();
             if (!context.mounted) return;
+
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => LoginPage()),
             );
           },
-          onDone: () {
+          onDone: () async {
+            await OnboardingManager.setOnboardingSeen();
             if (!context.mounted) return;
             Navigator.pushReplacement(
               context,

@@ -17,19 +17,11 @@ class _ForgotpasswordState extends State<Forgotpassword> {
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Logo or Title
-                  Text(
-                    "Elevare Ars",
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 15),
                   ForgotPasswordForm(),
                 ],
               ),

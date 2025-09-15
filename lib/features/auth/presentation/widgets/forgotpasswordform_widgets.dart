@@ -1,6 +1,8 @@
 import 'package:elevare_ars/features/auth/presentation/login.dart';
+import 'package:elevare_ars/features/auth/presentation/widgets/inputdecoration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
   const ForgotPasswordForm({super.key});
@@ -28,10 +30,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
 
   void _goBackToLogin() {
     // instead of using route name, point to LoginForm widget directly
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => const LoginPage()),
-    );
+    GoRouter.of(context).pop();
   }
 
   @override
@@ -49,7 +48,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
           const SizedBox(height: 8),
           const Text(
             "Enter your email and we’ll send you reset instructions.",
-            style: TextStyle(color: Colors.black54),
+            style: TextStyle(color: Colors.grey, fontSize: 12),
           ),
           const SizedBox(height: 24),
 
@@ -59,12 +58,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.done,
             inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
-            decoration: const InputDecoration(
-              labelText: "Email",
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              filled: true,
-              fillColor: Color(0xFFF5F5F5),
-            ),
+            decoration: inputDecoration_("Email"),
             validator: (val) {
               if (val == null || val.isEmpty) return "Enter your email";
               if (!RegExp(r"^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(val)) {
@@ -82,16 +76,12 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
               onPressed: _onSendReset,
               style: ElevatedButton.styleFrom(
                 elevation: 0,
-                backgroundColor: Theme.of(context).colorScheme.primary,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text(
-                "Send Reset Link",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
+              child: const Text("Send Reset Link"),
             ),
           ),
           const SizedBox(height: 20),
@@ -102,13 +92,14 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
             child: Text.rich(
               TextSpan(
                 text: "Remembered your password? ",
-                style: const TextStyle(color: Colors.black54),
+                style: TextStyle(fontSize: 12),
                 children: [
                   TextSpan(
                     text: "Login",
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.blue,
                     ),
                   ),
                 ],

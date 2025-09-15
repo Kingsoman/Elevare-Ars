@@ -1,5 +1,8 @@
+import 'package:elevare_ars/core/config/routes/app_route_constants.dart';
+import 'package:elevare_ars/features/auth/presentation/widgets/inputdecoration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -26,11 +29,13 @@ class _SignupFormState extends State<SignupForm> {
 
   void _onSignup() {
     if (_formKey.currentState!.validate()) {
+      GoRouter.of(
+        context,
+      ).pushReplacementNamed(MyAppRouteConstant.feedsRouteName);
       debugPrint(
         "First: ${_firstNameCtrl.text}, Last: ${_lastNameCtrl.text}, "
         "Email: ${_emailCtrl.text}, Password: ${_passwordCtrl.text}",
       );
-      // TODO: Supabase signup logic
     }
   }
 
@@ -40,48 +45,42 @@ class _SignupFormState extends State<SignupForm> {
       key: _formKey,
       child: Column(
         children: [
-          // First Name
-          TextFormField(
-            controller: _firstNameCtrl,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              labelText: "First Name",
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              filled: true,
-              fillColor: Color(0xFFF5F5F5),
-            ),
-            validator: (val) =>
-                val == null || val.isEmpty ? "Enter first name" : null,
-          ),
-          const SizedBox(height: 16),
+          Row(
+            children: [
+              // First Name
+              Expanded(
+                child: TextFormField(
+                  controller: _firstNameCtrl,
+                  textInputAction: TextInputAction.next,
+                  decoration: inputDecoration_('First Name'),
+                  validator: (val) =>
+                      val == null || val.isEmpty ? "Enter first name" : null,
+                ),
+              ),
+              const SizedBox(width: 8),
 
-          // Last Name
-          TextFormField(
-            controller: _lastNameCtrl,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              labelText: "Last Name",
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              filled: true,
-              fillColor: Color(0xFFF5F5F5),
-            ),
-            validator: (val) =>
-                val == null || val.isEmpty ? "Enter last name" : null,
+              // Last Name
+              Expanded(
+                child: TextFormField(
+                  controller: _lastNameCtrl,
+                  textInputAction: TextInputAction.next,
+                  decoration: inputDecoration_('Last Name'),
+                  validator: (val) =>
+                      val == null || val.isEmpty ? "Enter last name" : null,
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
           ),
-          const SizedBox(height: 16),
 
+          const SizedBox(height: 16),
           // Email
           TextFormField(
             controller: _emailCtrl,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
-            decoration: const InputDecoration(
-              labelText: "Email",
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              filled: true,
-              fillColor: Color(0xFFF5F5F5),
-            ),
+            decoration: inputDecoration_('Email'),
             validator: (val) {
               if (val == null || val.isEmpty) return "Enter your email";
               if (!RegExp(r"^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(val)) {
@@ -96,12 +95,7 @@ class _SignupFormState extends State<SignupForm> {
           TextFormField(
             controller: _passwordCtrl,
             obscureText: true,
-            decoration: const InputDecoration(
-              labelText: "Password",
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              filled: true,
-              fillColor: Color(0xFFF5F5F5),
-            ),
+            decoration: inputDecoration_('Password'),
             validator: (val) {
               if (val == null || val.isEmpty) return "Enter your password";
               if (val.length < 6) return "Password must be 6+ chars";
@@ -117,7 +111,6 @@ class _SignupFormState extends State<SignupForm> {
               onPressed: _onSignup,
               style: ElevatedButton.styleFrom(
                 elevation: 0,
-                backgroundColor: Theme.of(context).colorScheme.primary,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),

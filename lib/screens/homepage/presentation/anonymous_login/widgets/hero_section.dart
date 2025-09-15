@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
@@ -28,7 +27,8 @@ class HeroSection extends StatelessWidget {
                 children: [
                   Text(
                     "Connect with Industry Professionals, Elevate Your Career.",
-                    style: GoogleFonts.inter(
+                    style: TextStyle(
+                      fontFamily: 'poppins',
                       fontSize: 28, // Smaller font size for mobile
                       fontWeight: FontWeight.w900,
                       color: Colors.black87,
@@ -38,7 +38,7 @@ class HeroSection extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     "Elevate Ars is your gateway to career exploration. Students gain invaluable mentorship and real-world learning experiences, while professionals inspire the next generation and shape future talent.",
-                    style: GoogleFonts.inter(
+                    style: TextStyle(
                       fontSize: 14,
                       color: Colors.black54,
                       height: 1.5,
@@ -122,7 +122,8 @@ class HeroSection extends StatelessWidget {
                       children: [
                         Text(
                           "Connect with Industry Professionals, Elevate Your Career.",
-                          style: GoogleFonts.inter(
+                          style: TextStyle(
+                            fontFamily: 'poppins',
                             fontSize: 42,
                             fontWeight: FontWeight.w900,
                             color: Colors.black87,
@@ -132,7 +133,8 @@ class HeroSection extends StatelessWidget {
                         const SizedBox(height: 16),
                         Text(
                           "Elevate Ars is your gateway to career exploration. Students gain invaluable mentorship and real-world learning experiences, while professionals inspire the next generation and shape future talent.",
-                          style: GoogleFonts.inter(
+                          style: TextStyle(
+                            fontFamily: 'poppins',
                             fontSize: 16,
                             color: Colors.black54,
                             height: 1.5,

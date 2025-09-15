@@ -1,9 +1,10 @@
+import 'package:elevare_ars/core/config/routes/app_route_constants.dart';
 import 'package:elevare_ars/features/auth/presentation/widgets/authlayout.dart';
-import 'package:elevare_ars/features/auth/presentation/widgets/loginform_widgets.dart';
 import 'package:elevare_ars/features/auth/presentation/widgets/signupform_widgets.dart';
 import 'package:elevare_ars/features/auth/presentation/widgets/socialbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -15,25 +16,37 @@ class SignUpPage extends StatelessWidget {
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(
-              // padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Logo or Title
-                  Text(
-                    "Elevare Ars",
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SocialAuthButton(
+                        textColor:
+                            Theme.of(context).brightness == Brightness.light
+                            ? Colors.white
+                            : Colors.black,
+                        icon: FontAwesomeIcons.apple,
+                        text: "Continue with Apple",
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                        onPressed: () {},
+                      ),
+                      const SizedBox(height: 12),
+                      SocialAuthButton(
+                        textColor: Colors.white,
+                        icon: FontAwesomeIcons.google,
+                        text: "Continue with Google",
+                        backgroundColor: Colors.blue.shade600,
+                        onPressed: () {},
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 40),
-
-                  // Login Form
-                  const SignupForm(),
-
-                  const SizedBox(height: 30),
-
+                  const SizedBox(height: 20),
                   // Divider
                   Row(
                     children: [
@@ -54,50 +67,33 @@ class SignUpPage extends StatelessWidget {
                   ),
 
                   const SizedBox(height: 20),
-                  //Social Buttons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SocialAuthButton(
-                        icon: FontAwesomeIcons
-                            .google, // Google icon from FontAwesome
-                        color: Colors.red,
-                        onPressed: () {},
-                      ),
-                      const SizedBox(width: 12),
-                      SocialAuthButton(
-                        icon: FontAwesomeIcons.facebook,
-                        color: Colors.blue,
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 40),
-                  // Register link
+
+                  //TextFields/////////
+                  SignupForm(),
+
+                  const SizedBox(height: 24),
+
+                  // Already have an account
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(
+                      GoRouter.of(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginForm(),
-                        ),
-                      );
-                      // or Navigator.pop(context) if you're just going back
+                      ).pushNamed(MyAppRouteConstant.loginRouteName);
                     },
                     child: Text.rich(
                       TextSpan(
                         text: "Already have an account? ",
-                        style: const TextStyle(color: Colors.black54),
                         children: [
                           TextSpan(
                             text: "Login",
                             style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary,
                               fontWeight: FontWeight.bold,
+                              color: Colors.blue,
                             ),
                           ),
                         ],
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ],
@@ -106,6 +102,18 @@ class SignUpPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  InputDecoration _inputDecoration(String label) {
+    return InputDecoration(
+      labelStyle: TextStyle(fontSize: 15),
+      labelText: label,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide.none,
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
     );
   }
 }

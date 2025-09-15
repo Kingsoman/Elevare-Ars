@@ -1,7 +1,10 @@
+import 'package:elevare_ars/core/config/routes/app_route_constants.dart';
 import 'package:elevare_ars/features/auth/presentation/forgotpassword.dart';
-import 'package:elevare_ars/screens/homepage/presentation/anonymous_homepage.dart';
+import 'package:elevare_ars/features/auth/presentation/widgets/inputdecoration.dart';
+import 'package:elevare_ars/screens/feeds/feeds.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -24,10 +27,9 @@ class _LoginFormState extends State<LoginForm> {
 
   void _onLogin() {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushReplacement(
+      GoRouter.of(
         context,
-        MaterialPageRoute(builder: (context) => AnonymousHomepage()),
-      );
+      ).pushReplacementNamed(MyAppRouteConstant.feedsRouteName);
       debugPrint("Email: ${_emailCtrl.text}, Password: ${_passwordCtrl.text}");
     }
   }
@@ -44,12 +46,7 @@ class _LoginFormState extends State<LoginForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
-            decoration: const InputDecoration(
-              labelText: "Email",
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              filled: true,
-              fillColor: Color(0xFFF5F5F5),
-            ),
+            decoration: inputDecoration_('Email'),
             validator: (val) {
               if (val == null || val.isEmpty) return "Enter your email";
               if (!RegExp(r"^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(val)) {
@@ -64,12 +61,7 @@ class _LoginFormState extends State<LoginForm> {
           TextFormField(
             controller: _passwordCtrl,
             obscureText: true,
-            decoration: const InputDecoration(
-              labelText: "Password",
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              filled: true,
-              fillColor: Color(0xFFF5F5F5),
-            ),
+            decoration: inputDecoration_('Password'),
             validator: (val) {
               if (val == null || val.isEmpty) return "Enter your password";
               if (val.length < 6) return "Password too short";
@@ -85,35 +77,31 @@ class _LoginFormState extends State<LoginForm> {
               onPressed: _onLogin,
               style: ElevatedButton.styleFrom(
                 elevation: 0,
-                backgroundColor: Theme.of(context).colorScheme.primary,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text(
-                "Login",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
+              child: const Text("Login"),
             ),
           ),
+          SizedBox(height: 10),
           Align(
             alignment: Alignment.centerRight,
+
             child: GestureDetector(
               onTap: () {
                 // Navigate to Forgot Password page
-                Navigator.push(
+                GoRouter.of(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const Forgotpassword(),
-                  ),
-                );
+                ).pushNamed(MyAppRouteConstant.forgotPasswordRouteName);
               },
               child: Text(
                 "Forgot Password?",
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.blue,
                 ),
               ),
             ),

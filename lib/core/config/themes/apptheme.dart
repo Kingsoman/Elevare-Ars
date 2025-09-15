@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// A professional and consistent app theme for both light and dark modes.
 ///
@@ -84,7 +83,8 @@ class AppTheme {
 
     // 3. Define the base theme and typography.
     final baseTheme = ThemeData(brightness: brightness);
-    final textTheme = GoogleFonts.poppinsTextTheme(baseTheme.textTheme).apply(
+    final textTheme = baseTheme.textTheme.apply(
+      fontFamily: 'Poppins',
       bodyColor: colorScheme.onSurface,
       displayColor: colorScheme.onSurface,
     );
@@ -95,7 +95,6 @@ class AppTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.surface,
       textTheme: textTheme.copyWith(
-        // Customizing specific text styles for a clear visual hierarchy.
         headlineLarge: textTheme.headlineLarge?.copyWith(
           fontWeight: FontWeight.bold,
         ),
