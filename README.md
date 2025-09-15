@@ -74,12 +74,17 @@ Students often struggle to understand real-world career paths and lack access to
 
 <h2>🏞 Demo / Screenshots</h2>
 <p align="center">
-  <img src="screenshots/homepage.png" width="800" alt="Homepage Screenshot Placeholder"/>
+  <img width="800"  alt="localhost_24515_(iPhone 14 Pro Max)" src="https://github.com/user-attachments/assets/514496cf-7ac0-4270-bc75-5d5509c7c5cf" />
+
 </p>
 <p align="center">
-  <img src="screenshots/mobile_home.png" width="300" alt="Mobile Screenshot Placeholder"/>
-  <img src="screenshots/tablet_home.png" width="500" alt="Tablet Screenshot Placeholder"/>
+  <img width="800" alt="localhost_24515_(iPad Pro)" src="https://github.com/user-attachments/assets/fd8a6da7-e4ee-4865-a6b9-39fab664654e" />
+
 </p>
+  
+<p align="center"><img width="800" alt="localhost_24515_(laptop)" src="https://github.com/user-attachments/assets/32a79a0e-10db-4f21-94a5-810cae789e06" /></p>
+
+
 
 <hr/>
 
