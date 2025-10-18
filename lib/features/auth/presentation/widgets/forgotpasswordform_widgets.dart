@@ -1,5 +1,5 @@
-import 'package:elevare_ars/features/auth/presentation/login.dart';
-import 'package:elevare_ars/features/auth/presentation/widgets/inputdecoration.dart';
+import 'package:elevare_ars/core/routing/routes/app_route_constants.dart';
+import 'package:elevare_ars/core/widgets/form%20widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -30,7 +30,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
 
   void _goBackToLogin() {
     // instead of using route name, point to LoginForm widget directly
-    GoRouter.of(context).pop();
+    context.pushReplacementNamed(MyAppRouteConstant.loginRouteName);
   }
 
   @override
@@ -87,24 +87,27 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
           const SizedBox(height: 20),
 
           // Back to login
-          GestureDetector(
-            onTap: _goBackToLogin,
-            child: Text.rich(
-              TextSpan(
-                text: "Remembered your password? ",
-                style: TextStyle(fontSize: 12),
-                children: [
-                  TextSpan(
-                    text: "Login",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.blue,
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: _goBackToLogin,
+              child: Text.rich(
+                TextSpan(
+                  text: "Remembered your password? ",
+                  style: TextStyle(fontSize: 12),
+                  children: [
+                    TextSpan(
+                      text: "Login",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.blue,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ],

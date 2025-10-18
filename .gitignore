@@ -1,4 +1,8 @@
-# Miscellaneous
+
+
+
+# SYSTEM / TEMPORARY FILES
+
 *.class
 *.log
 *.pyc
@@ -11,60 +15,120 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+.env
+.env.*
+*.lock
 
-# IntelliJ/Android Studio project files
+
+# IDE FILES
+
 .idea/
 *.iml
-
 *.ipr
 *.iws
-.idea/
-.env
+.vscode/
+*.code-workspace
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
+# FLUTTER / DART
+
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.packages
 .pub-cache/
 .pub/
+**/doc/api/
+**/ios/Flutter/.last_build_id
 /build/
 
-# iOS
+
+# ANDROID
+
+android/.gradle/
+android/app/build/
+android/local.properties
+*.apk
+*.aar
+*.iml
+*.keystore
+key.properties
+app.*.symbols
+app.*.map.json
+
+# Android Studio build outputs
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+
+# iOS / macOS
+
 ios/Pods/
 ios/.symlinks/
 ios/Flutter/App.framework
 ios/Flutter/Flutter.framework
 ios/Flutter/Flutter.podspec
-
-# macOS
+ios/Flutter/.last_build_id
+ios/ServiceDefinitions.json
 macos/Flutter/ephemeral/
+GoogleService-Info.plist
 
-# Windows
+
+# WINDOWS / LINUX
+
 windows/flutter/ephemeral/
-
-# Linux
 linux/flutter/ephemeral/
 
-# Android
-android/.gradle/
-android/app/build/
-*.apk
-*.aar
 
-# Symbolication related
-app.*.symbols
+# WEB
 
-# Obfuscation related
-app.*.map.json
+web/.dart_tool/
+web/.firebase/
+web/.idea/
+web/.vscode/
+build/web/
 
-# Android Studio build artifacts
-/android/app/debug
-/android/app/profile
-/android/app/release
+
+# TESTS & COVERAGE
+
+coverage/
+test/**/*.log
+test/**/*.tmp
+*.test.json
+
+
+# SUPABASE / SECURITY
+
+supabase/.branches/
+supabase/.temp/
+supabase/.env
+supabase/config.toml
+supabase/migrations/.temp/
+supabase/.DS_Store
+supabase/functions/node_modules/
+supabase/functions/.output/
+supabase/functions/**/dist/
+supabase/functions/**/.vercel/
+supabase/functions/**/.env
+
+
+
+
+# LOCALIZATION / GENERATED
+
+lib/l10n/*.g.dart
+lib/generated_plugin_registrant.dart
+
+
+# OTHER
+
+*.sqlite
+*.db
+*.bak
+*.tmp
+*.orig
+*.rej
+*.swo
+*.swp
+*.user

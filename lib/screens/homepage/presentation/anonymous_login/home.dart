@@ -2,7 +2,6 @@ import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/widget
 import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/widgets/explore_section.dart';
 import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/widgets/footer.dart';
 import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/widgets/game_section.dart';
-import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/widgets/header.dart';
 import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/widgets/hero_section.dart';
 import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/widgets/job_section.dart';
 import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/widgets/open_to_work_section.dart';

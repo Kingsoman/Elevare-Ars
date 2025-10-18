@@ -18,7 +18,7 @@ class AuthLayout extends StatelessWidget {
               children: [
                 // Form card
                 Card(
-                  elevation: 4,
+                  elevation: 0.5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),

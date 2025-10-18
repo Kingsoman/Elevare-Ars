@@ -1,0 +1,177 @@
+// lib/features/getstarted/data/datasources/onboarding_options.dart
+
+class OnboardingOptions {
+  // Step 1 — Select Skills (LinkedIn-like categories)
+  static const Map<String, List<String>> skillsByCategory = {
+    'Technical Skills': [
+      'Python',
+      'JavaScript',
+      'Java',
+      'C#',
+      'C++',
+      'Go',
+      'Rust',
+      'Swift',
+      'Kotlin',
+      'PHP',
+      'Flutter',
+      'React',
+      'Angular',
+      'Vue.js',
+      'Node.js',
+      'Django',
+      'Ruby on Rails',
+      'SQL',
+      'NoSQL',
+      'MongoDB',
+      'PostgreSQL',
+      'Firebase',
+      'AWS',
+      'Azure',
+      'Google Cloud',
+      'Docker',
+      'Kubernetes',
+      'CI/CD',
+      'Git',
+      'Machine Learning',
+      'Data Analysis',
+      'Pandas',
+      'TensorFlow',
+      'PyTorch',
+      'Cybersecurity',
+      'Blockchain',
+      'AR/VR Development',
+      'Mobile App Development',
+      'Web Development',
+    ],
+    'Design & Creative': [
+      'UI/UX Design',
+      'Figma',
+      'Adobe XD',
+      'Sketch',
+      'Graphic Design',
+      'Illustration',
+      'Video Editing',
+      'Motion Graphics',
+      'User Research',
+      'Prototyping',
+    ],
+    'Business & Soft Skills': [
+      'Project Management',
+      'Agile Methodologies',
+      'Scrum',
+      'Product Management',
+      'Digital Marketing',
+      'SEO/SEM',
+      'Content Writing',
+      'Copywriting',
+      'Sales',
+      'Business Development',
+      'Public Speaking',
+      'Leadership',
+      'Teamwork',
+      'Critical Thinking',
+      'Problem Solving',
+      'Communication',
+      'Financial Analysis',
+    ],
+  };
+
+  // Step 2 — Choose Interests
+  static const List<String> interests = [
+    'Technology',
+    'Software Development',
+    'Artificial Intelligence',
+    'Machine Learning',
+    'Data Science',
+    'Web3',
+    'Blockchain',
+    'Cybersecurity',
+    'Cloud Computing',
+    'Mobile Tech',
+    'SaaS',
+    'FinTech',
+    'HealthTech',
+    'EdTech',
+    'E-commerce',
+    'Gaming',
+    'AR/VR',
+    'Internet of Things (IoT)',
+    'UI/UX Design',
+    'Graphic Design',
+    'Startups',
+    'Entrepreneurship',
+    'Venture Capital',
+    'Business Strategy',
+    'Marketing',
+    'Finance',
+    'Investing',
+    'Product Management',
+    'Renewable Energy',
+    'Biotechnology',
+    'Space Exploration',
+  ];
+
+  // Step 3 — Career Interests
+  static const List<String> careerPaths = [
+    'Software Engineer',
+    'Frontend Developer',
+    'Backend Developer',
+    'Full-Stack Developer',
+    'Mobile App Developer',
+    'Data Scientist',
+    'Data Analyst',
+    'Machine Learning Engineer',
+    'AI Specialist',
+    'Product Manager',
+    'UI/UX Designer',
+    'DevOps Engineer',
+    'Cloud Architect',
+    'Cybersecurity Analyst',
+    'Game Developer',
+    'Business Analyst',
+    'Digital Marketer',
+    'IT Project Manager',
+    'QA Engineer',
+  ];
+
+  // Step 4 — Goals
+  static const List<String> goals = [
+    'Land my first job in tech',
+    'Transition to a new career',
+    'Get a promotion or raise',
+    'Build a strong professional network',
+    'Find a mentor',
+    'Develop leadership skills',
+    'Learn a specific new skill',
+    'Build and launch a project/product',
+    'Start my own business',
+    'Gain industry insights',
+    'Improve my portfolio',
+    'Prepare for technical interviews',
+    'Become a better public speaker',
+  ];
+
+  // Step 5 — Experience Levels (like LinkedIn)
+  static const List<String> experienceLevels = [
+    'Beginner',
+    'Intermediate',
+    'Advanced',
+    'Expert',
+  ];
+
+  // Step 6 — Preferred Learning Style
+  static const List<String> learningStyles = [
+    'Visual',
+    'Auditory',
+    'Kinesthetic',
+    'Reading',
+  ];
+
+  // Step 7 — Availability (for mentors)
+  static const List<String> availability = [
+    'Available',
+    'Limited Availability',
+    'Not Available',
+  ];
+}

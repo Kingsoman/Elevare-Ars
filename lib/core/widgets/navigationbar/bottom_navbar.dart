@@ -1,5 +1,7 @@
+import 'package:elevare_ars/core/routing/routes/app_route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -11,7 +13,7 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 0;
 
-  final List<BottomNavigationBarItem> _items = const [
+  final List<BottomNavigationBarItem> _items = [
     BottomNavigationBarItem(
       icon: FaIcon(FontAwesomeIcons.house),
       label: "Home",
@@ -44,6 +46,10 @@ class _BottomNavState extends State<BottomNav> {
       type: BottomNavigationBarType.fixed,
       onTap: (index) {
         setState(() => _currentIndex = index);
+        if (index == 0) {
+          context.goNamed(MyAppRouteConstant.feedsRouteName);
+        }
+        // Add navigation for other indices if needed
       },
     );
   }

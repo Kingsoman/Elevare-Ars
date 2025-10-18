@@ -16,7 +16,7 @@ class AppTheme {
   // 1. Define the single seed color that will be used to generate
   //    the entire color palette for both light and dark themes.
   //    A vibrant, professional blue is chosen for its versatility.
-  static const Color _seedColor = Color.fromARGB(255, 92, 92, 92);
+  static const Color _seedColor = Color.fromARGB(255, 245, 241, 237);
 
   // --- Light Theme Definition ---
   static final ThemeData lightTheme = _buildTheme(
@@ -24,15 +24,16 @@ class AppTheme {
     seedColor: _seedColor,
     // Override specific colors of the generated scheme for a custom look.
     colorOverrides: const ColorScheme.light().copyWith(
-      surface: const Color(0xFFF8F9FA), // Main background color (from image)
-      onSurface: const Color(0xFF1A1C1E), // Main text color
-      surfaceContainer: Colors.white, // For cards, dialogs, sheets (from image)
-      onSurfaceVariant: const Color(0xFF43474E), // For secondary text and icons
-      outlineVariant: const Color(
-        0xFFE0E0E0,
-      ), // For subtle borders and dividers
-      error: const Color(0xFFDC2626), // Error color for validation, etc.
-      onError: Colors.white, // Text/icon color on top of the error color
+      primary: const Color(0xFFFF7500), // LinkedIn Blue
+      surface: const Color(0xFFF3F2EE), // Soft background
+      onSurface: const Color.fromARGB(255, 85, 85, 85), // Primary text
+      surfaceContainer: Colors.white, // White cards/posts
+      outlineVariant: const Color(0xFFC7C7C7), // Subtle borders
+      // 4. Error Colors (for Light Theme)
+      error: const Color(0xFFB3261E), // Strong, deep red
+      onError: Colors.white, // White text on error background
+
+      onSurfaceVariant: const Color(0xFFA0A0A0), // Secondary text/icons
     ),
   );
 
@@ -40,19 +41,20 @@ class AppTheme {
   static final ThemeData darkTheme = _buildTheme(
     brightness: Brightness.dark,
     seedColor: _seedColor,
-    // Override specific colors of the generated scheme for a custom look.
     colorOverrides: const ColorScheme.dark().copyWith(
-      surface: const Color(0xFF121212), // Main background color (from image)
-      onSurface: const Color(0xFFE2E2E6), // Main text color (avoids pure white)
-      surfaceContainer: const Color(
-        0xFF1E2126,
-      ), // For cards, dialogs, sheets (from image)
-      onSurfaceVariant: const Color(0xFF9CA3AF), // For secondary text and icons
-      outlineVariant: const Color(
-        0xFF32363B,
-      ), // For subtle borders and dividers
-      error: const Color(0xFFF87171), // A lighter red for dark mode
-      onError: const Color(0xFF450A0A), // High-contrast text on error color
+      // 1. Primary Colors
+      primary: const Color(0xFFFF7500), // Bright Blue (Action/Active)
+      onPrimary: const Color(0xFF003366), // Text on Blue
+      // 2. Background/Surface Colors
+      surface: const Color(0xFF121212), // Main background
+      onSurface: const Color(0xFFEFEFEF), // Main text color
+      surfaceContainer: const Color(0xFF1A1A1A), // Cards, dialogs, sheets
+      // 3. Secondary/Accessory Colors
+      onSurfaceVariant: const Color(0xFFA0A0A0), // Secondary text/icons
+      outlineVariant: const Color(0xFF3A3A3A), // Subtle borders/dividers
+      // 4. Error Colors
+      error: const Color(0xFFFFB4A9), // Error indicator
+      onError: const Color(0xFF690005), // Text on error
     ),
   );
 
@@ -87,6 +89,7 @@ class AppTheme {
       fontFamily: 'Poppins',
       bodyColor: colorScheme.onSurface,
       displayColor: colorScheme.onSurface,
+      fontFamilyFallback: ['Rovoto', 'NotoSans'],
     );
 
     // 4. Return the configured ThemeData.
@@ -122,12 +125,11 @@ class AppTheme {
 
       // ✅ AppBar Theme
       appBarTheme: AppBarTheme(
-        backgroundColor: colorScheme.surface,
+        backgroundColor: colorScheme.surfaceContainer,
         foregroundColor: colorScheme.onSurface,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
+        elevation: 5,
         centerTitle: true,
-        titleTextStyle: textTheme.titleLarge,
+        titleTextStyle: textTheme.bodyMedium,
       ),
 
       // ✅ Button Themes
@@ -187,7 +189,7 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: colorScheme.primary, width: 2),
+          borderSide: BorderSide(color: colorScheme.primary, width: 1),
         ),
         labelStyle: textTheme.bodyMedium,
         hintStyle: textTheme.bodyMedium?.copyWith(
@@ -201,7 +203,7 @@ class AppTheme {
         selectedItemColor: colorScheme.primary,
         unselectedItemColor: colorScheme.onSurfaceVariant,
         type: BottomNavigationBarType.fixed,
-        elevation: 0,
+        elevation: 4,
         showSelectedLabels: true,
         showUnselectedLabels: false,
       ),

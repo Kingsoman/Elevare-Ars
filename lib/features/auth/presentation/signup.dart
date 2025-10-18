@@ -1,4 +1,5 @@
-import 'package:elevare_ars/core/config/routes/app_route_constants.dart';
+import 'package:elevare_ars/core/config/responsive%20layout/check_platform_device.dart';
+import 'package:elevare_ars/core/routing/routes/app_route_constants.dart';
 import 'package:elevare_ars/features/auth/presentation/widgets/authlayout.dart';
 import 'package:elevare_ars/features/auth/presentation/widgets/signupform_widgets.dart';
 import 'package:elevare_ars/features/auth/presentation/widgets/socialbutton.dart';
@@ -23,19 +24,25 @@ class SignUpPage extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SocialAuthButton(
-                        textColor:
-                            Theme.of(context).brightness == Brightness.light
-                            ? Colors.white
-                            : Colors.black,
-                        icon: FontAwesomeIcons.apple,
-                        text: "Continue with Apple",
-                        backgroundColor:
-                            Theme.of(context).brightness == Brightness.light
-                            ? Colors.black
-                            : Colors.white,
-                        onPressed: () {},
-                      ),
+                      PlatformHelper.isIOS ||
+                              PlatformHelper.isMacOS ||
+                              PlatformHelper.isAppleBrowser
+                          ? SocialAuthButton(
+                              textColor:
+                                  Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? Colors.white
+                                  : Colors.black,
+                              icon: FontAwesomeIcons.apple,
+                              text: "Continue with Apple",
+                              backgroundColor:
+                                  Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
+                              onPressed: () {},
+                            )
+                          : SizedBox.shrink(),
                       const SizedBox(height: 12),
                       SocialAuthButton(
                         textColor: Colors.white,
@@ -74,26 +81,29 @@ class SignUpPage extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Already have an account
-                  GestureDetector(
-                    onTap: () {
-                      GoRouter.of(
-                        context,
-                      ).pushNamed(MyAppRouteConstant.loginRouteName);
-                    },
-                    child: Text.rich(
-                      TextSpan(
-                        text: "Already have an account? ",
-                        children: [
-                          TextSpan(
-                            text: "Login",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: () {
+                        context.pushReplacementNamed(
+                          MyAppRouteConstant.loginRouteName,
+                        );
+                      },
+                      child: Text.rich(
+                        TextSpan(
+                          text: "Already have an account? ",
+                          children: [
+                            TextSpan(
+                              text: "Login",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                 ],
@@ -102,18 +112,6 @@ class SignUpPage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  InputDecoration _inputDecoration(String label) {
-    return InputDecoration(
-      labelStyle: TextStyle(fontSize: 15),
-      labelText: label,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide.none,
-      ),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
     );
   }
 }

@@ -1,17 +1,19 @@
 import 'package:elevare_ars/core/config/themes/darkmode_switch_widget.dart';
+import 'package:elevare_ars/core/widgets/menu/side_menu.dart';
 import 'package:elevare_ars/core/widgets/navigationbar/bottom_navbar.dart';
 import 'package:elevare_ars/core/widgets/navigationbar/mobile_drawer.dart';
 import 'package:elevare_ars/core/widgets/navigationbar/navbar_responsive_helper.dart';
 import 'package:elevare_ars/core/widgets/navigationbar/top_navbar.dart';
+import 'package:elevare_ars/features/follow/presentation/widgets/who_to_follow_card.dart';
+import 'package:elevare_ars/features/profile/presentation/screens/profile_card.dart';
 import 'package:elevare_ars/screens/feeds/widgets/create_postcard.dart';
 import 'package:elevare_ars/screens/feeds/widgets/feedlist.dart';
-import 'package:elevare_ars/screens/feeds/widgets/people_you_may_know.dart';
-import 'package:elevare_ars/screens/feeds/widgets/profile_card.dart';
-import 'package:elevare_ars/screens/feeds/widgets/simple_menu.dart';
+import 'package:elevare_ars/features/mentorship/presentation/screens/mentorship_request_card.dart';
+import 'package:elevare_ars/screens/feeds/widgets/session_request_card.dart';
 import 'package:elevare_ars/screens/feeds/widgets/trending_card.dart';
 import 'package:elevare_ars/screens/homepage/presentation/anonymous_login/home.dart';
 import 'package:flutter/material.dart';
-import 'package:elevare_ars/core/config/responsive%20layout/response_layout.dart';
+import 'package:elevare_ars/core/config/responsive%20layout/responsive_layout.dart';
 
 class Feeds extends StatelessWidget {
   const Feeds({super.key});
@@ -35,10 +37,16 @@ class Feeds extends StatelessWidget {
                     children: [
                       ProfileCard(),
                       SizedBox(height: 16),
-                      SimpleMenuCard(),
+                      SideMenu(),
                       ThemeSwitchTile(),
                       ListTile(
-                        title: Text('go to mentor screen'),
+                        title: Text(
+                          'go to mentor screen',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                         onTap: () {
                           Navigator.push(
                             context,
@@ -60,6 +68,10 @@ class Feeds extends StatelessWidget {
             ),
             rightColumn: Column(
               children: [
+                SessionRequestsCard(),
+                SizedBox(height: 12),
+                MentorshipRequestsCard(),
+                SizedBox(height: 12),
                 WhoToFollowCard(),
                 SizedBox(height: 12),
                 TrendingCard(),

@@ -1,44 +1,30 @@
+import 'package:elevare_ars/core/config/themes/apptheme.dart';
+import 'package:elevare_ars/core/global%20providers/shared_preference_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/material.dart';
 
-/// Key to save theme mode
-const _themeModeKey = 'theme_mode';
+const themeModeKey = 'theme_mode';
 
-/// StateNotifier to handle theme switching and persistence
 class ThemeNotifier extends StateNotifier<bool> {
-  ThemeNotifier() : super(false) {
-    // Start with false (dark theme) until loaded
-    loadTheme();
-  }
+  final SharedPreferences prefs;
 
-  Future<void> loadTheme() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      final themeMode = prefs.getBool(_themeModeKey);
-
-      // If a theme was previously saved, use it
-      // Otherwise default to true (light theme)
-      state = themeMode ?? true;
-    } catch (e) {
-      // If there's an error reading preferences, default to light theme
-      state = true;
-    }
-  }
+  ThemeNotifier(this.prefs) : super(prefs.getBool(themeModeKey) ?? true);
 
   Future<void> setTheme(bool isLightMode) async {
     state = isLightMode;
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool(_themeModeKey, isLightMode);
-    } catch (e) {
-      // Handle potential SharedPreferences errors
-      debugPrint('Failed to save theme preference: $e');
-    }
+    await prefs.setBool(themeModeKey, isLightMode);
   }
 }
 
-/// Provider you'll use in your app
-final themeProvider = StateNotifierProvider<ThemeNotifier, bool>(
-  (ref) => ThemeNotifier(),
-);
+final themeProvider = StateNotifierProvider<ThemeNotifier, bool>((ref) {
+  final prefs = ref.watch(sharedPrefsProvider);
+  return ThemeNotifier(prefs);
+});
+
+final colorSchemeProvider = Provider<ColorScheme>((ref) {
+  final isLightMode = ref.watch(themeProvider);
+  return isLightMode
+      ? AppTheme.lightTheme.colorScheme
+      : AppTheme.darkTheme.colorScheme;
+});

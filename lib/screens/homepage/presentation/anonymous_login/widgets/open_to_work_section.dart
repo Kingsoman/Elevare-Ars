@@ -1,4 +1,4 @@
-import 'package:elevare_ars/core/config/responsive%20layout/response_layout.dart';
+import 'package:elevare_ars/core/config/responsive%20layout/responsive_layout.dart';
 import 'package:flutter/material.dart';
 
 class OpenToWorkSection extends StatelessWidget {

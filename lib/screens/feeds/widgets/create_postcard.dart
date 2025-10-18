@@ -158,7 +158,7 @@ class _PostEditorContent extends StatelessWidget {
                   onPressed: () {
                     String content = controller.text.trim();
                     if (content.isNotEmpty) {
-                      print("Posted: $content");
+                      debugPrint("Posted: $content");
                       Navigator.pop(context);
                     }
                   },
